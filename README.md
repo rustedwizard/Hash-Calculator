@@ -4,7 +4,7 @@ Nuget package: Install-Package HashCalculator -Version 1.0.0
 This is a simple Hash code calculator library targeting .Net Framwork 4.7.2. It provides support of calculating hash code of
 any file and return its hash code in string representation.
 
-##Following Hash algorithm is supported.
+## Following Hash algorithm is supported.
   * 1. SHA1
   * 2. SHA256
   * 3. SHA384
@@ -12,7 +12,7 @@ any file and return its hash code in string representation.
   * 5. RIPEMD160
   * 6. MD5
   
- ##Usage:
+ ## Usage:
  
  This nuget package is fairly simple and straight forward. It conatains one simple static class and One method ComputeHash.
  
@@ -28,5 +28,5 @@ any file and return its hash code in string representation.
   
   * 4. To pass algorithm simple pass it in String as "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160", "MD5".
   
-  * 5. Please be aware that both synchronous method and asynchronous method throws FileNotFoundExceptions for incorrect path to file
+  * 5. Please **be aware** that both synchronous method and asynchronous method throws FileNotFoundExceptions for incorrect path to file
   and Exception for possible wrong algorithm name.
