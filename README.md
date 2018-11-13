@@ -17,6 +17,7 @@ any file and return its hash code in string representation.
  This nuget package is fairly simple and straight forward. It conatains one simple static class and One method ComputeHash.
  
  To use, simple add the nuget package in your project by:
+ 
   * 1.From Package management console in Visual Studio: Install-Package HashCalculator -Version 1.0.0 
   
   * 2.From Dotnet CLI: dotnet add package HashCalculator --version 1.0.0 
