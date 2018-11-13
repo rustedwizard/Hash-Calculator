@@ -1,5 +1,5 @@
 # Hash-Calculator
-Nuget package: Install-Package HashCalculator -Version 1.0.0 
+Nuget package: Install-Package HashCalculator -Version 1.1.0.2 
 
 This is a simple Hash code calculator library targeting .Net Framwork 4.7.2. It provides support of calculating hash code of
 any file and return its hash code in string representation.
