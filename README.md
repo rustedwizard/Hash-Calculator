@@ -25,9 +25,6 @@ any file and return its hash code in string representation.
 * From Dotnet CLI: dotnet add package HashCalculator --version 1.1.0.2
  and call the function in your program: HashCalculator.HashCalculator.ComputeHash("ALGORITHM","PATH/TO/YOUR/FILE")
 
-* If the file you need to calculate its hash is going to be very large in size, you may consider do this asynchronously by
-  calling ComputeHashAsync("ALGORITHM", "PATH/TO/YOUR/FILE")
-
 * To pass algorithm simple pass it in String as "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160", "MD5".
 
 * Please **be aware** that both synchronous method and asynchronous method throws FileNotFoundExceptions for incorrect path to file
