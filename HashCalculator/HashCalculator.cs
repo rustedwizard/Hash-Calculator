@@ -86,23 +86,5 @@ namespace HashCalculator
                 return result.ToString();
             }
         }
-
-        public async static Task<string> ComputeHashAsync(string hashAlgorithm, string path)
-        {
-            try
-            {
-                return await Task.Run(() =>
-                {
-                    return ComputeHash(hashAlgorithm, path);
-                });
-            }
-            catch(FileNotFoundException ex)
-            {
-                throw ex;
-            }catch(System.Exception e)
-            {
-                throw e;
-            }
-        }
     }
 }
