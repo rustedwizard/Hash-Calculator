@@ -1,8 +1,9 @@
-﻿#define DEBUG
+﻿#define RELEASE
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HashCalculator
 {
@@ -67,7 +68,7 @@ namespace HashCalculator
             catch (FileNotFoundException ex)
             {
 #if DEBUG
-                Debug.Write(ex.ToString("X2"));
+                Debug.Write(ex.ToString());
 #endif
                 throw ex;
             }
@@ -83,6 +84,24 @@ namespace HashCalculator
                     result.Append(item.ToString("X2"));
                 }
                 return result.ToString();
+            }
+        }
+
+        public async static Task<string> ComputeHashAsync(string path, string hashAlgorithm)
+        {
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    return ComputeHash(path, hashAlgorithm);
+                });
+            }
+            catch(FileNotFoundException ex)
+            {
+                throw ex;
+            }catch(System.Exception e)
+            {
+                throw e;
             }
         }
     }
