@@ -27,5 +27,5 @@ any file and return its hash code in string representation.
 
 * To pass algorithm simple pass it in String as "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160", "MD5".
 
-* Please **be aware** that both synchronous method and asynchronous method throws FileNotFoundExceptions for incorrect path to file
+* Please **be aware** that ComputeHash method throws FileNotFoundExceptions for incorrect path to file
   and Exception for possible wrong algorithm name.
