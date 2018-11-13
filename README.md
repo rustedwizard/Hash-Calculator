@@ -16,14 +16,14 @@ any file and return its hash code in string representation.
 
 ## Usage
 
- This nuget package is fairly simple and straight forward. It conatains one simple static class and two method ComputeHash and ComputeHashAsync.
+ This nuget package is fairly simple and straight forward. It contains one simple static class and two method ComputeHash and ComputeHashAsync.
 
- To use, simple add the nuget package in your project by:
+ To use, simply add the nuget package in your project by:
 
 * From Package management console in Visual Studio: Install-Package HashCalculator -Version 1.0.0
 
 * From Dotnet CLI: dotnet add package HashCalculator --version 1.0.0
- and call the function in your program: HashCalculator.HashComputer.ComputeHash("PATH/TO/YOUT/FILE", "ALGORITHM")
+ and call the function in your program: HashCalculator.HashComputer.ComputeHash("PATH/TO/YOUr/FILE", "ALGORITHM")
 
 * If the file you need to calculate its hash is going to be very large in size, you may consider do this asynchronously by
   calling ComputeHashAsync("PATH/TO/YOUR/FILE", "ALGORITHM")
