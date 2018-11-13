@@ -16,7 +16,7 @@ any file and return its hash code in string representation.
 
 ## Usage
 
- This nuget package is fairly simple and straight forward. It conatains one simple static class and One method ComputeHash.
+ This nuget package is fairly simple and straight forward. It conatains one simple static class and two method ComputeHash and ComputeHashAsync.
 
  To use, simple add the nuget package in your project by:
 
