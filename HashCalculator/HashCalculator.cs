@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HashCalculator
 {
-    public static class HashComputer
+    public static class HashCalculator
     {
         public static string ComputeHash(string hashAlgorithm, string path)
         {
@@ -87,13 +87,13 @@ namespace HashCalculator
             }
         }
 
-        public async static Task<string> ComputeHashAsync(string path, string hashAlgorithm)
+        public async static Task<string> ComputeHashAsync(string hashAlgorithm, string path)
         {
             try
             {
                 return await Task.Run(() =>
                 {
-                    return ComputeHash(path, hashAlgorithm);
+                    return ComputeHash(hashAlgorithm, path);
                 });
             }
             catch(FileNotFoundException ex)
