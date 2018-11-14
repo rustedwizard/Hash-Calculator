@@ -1,89 +1,84 @@
-﻿#define RELEASE
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace HashCalculator
 {
-    public static class HashCalculator
+    public class HashCalculator
     {
-        public static string ComputeHash(string hashAlgorithm, string path)
+        private readonly Dictionary<string, IHashCalculator> _calculator;
+        public HashCalculator()
         {
-            try
+            _calculator = new Dictionary<string, IHashCalculator>();
+            _calculator.Add("MD5", new MD5Calculator());
+            _calculator.Add("SHA1", new SHA1Calculator());
+            _calculator.Add("SHA256", new SHA256Calculator());
+            _calculator.Add("SHA384", new SHA384Calculator());
+            _calculator.Add("SHA512", new SHA512Calculator());
+            _calculator.Add("RIPEMD160", new RIPEMD160Calculator());
+        }
+
+        public string GetHashInString(string algorithm, string path)
+        {
+
+            VerifyParameter(algorithm, path);
+            IHashCalculator calculator = _calculator[algorithm];
+            return calculator.GetHashInString(path);
+        }
+
+        public string GetHashInStringAsync(string algorithm, string path)
+        {
+            VerifyParameter(algorithm, path);
+            IHashCalculator calculator = _calculator[algorithm];
+            return calculator.GetHashInStringAsync(path);
+        }
+
+        public byte[] GetHashInByte(string algorithm, string path)
+        {
+            VerifyParameter(algorithm, path);
+            IHashCalculator calculator = _calculator[algorithm];
+            return calculator.GetHashInByte(path);
+        }
+
+        public byte[] GetHashInByteAsync(string algorithm, string path)
+        {
+            VerifyParameter(algorithm, path);
+            IHashCalculator calculator = _calculator[algorithm];
+            return calculator.GetHashInByteAsync(path);
+        }
+
+        public bool CompareTwoFilesHash(string algoritm, string path, string pathToCompare)
+        {
+            byte[] first = GetHashInByteAsync(algoritm, path);
+            byte[] second = GetHashInByteAsync(algoritm, pathToCompare);
+            foreach(var item in first)
             {
-                using (var fileStream = File.OpenRead(path))
+                foreach(var secItem in second)
                 {
-                    switch (hashAlgorithm)
+                   if (!item.Equals(secItem))
                     {
-                        case "SHA1":
-                            using (var sha1 = HMACSHA1.Create())
-                            {
-                                return ByteArrayToString(sha1.ComputeHash(fileStream));
-                            }
-                        case "SHA384":
-                            using (var sha384 = HMACSHA384.Create())
-                            {
-                                return ByteArrayToString(sha384.ComputeHash(fileStream));
-                            }
-                        case "SHA256":
-                            using (var sha256 = HMACSHA256.Create())
-                            {
-                                return ByteArrayToString(sha256.ComputeHash(fileStream));
-                            }
-                        case "SHA512":
-                            using (var sha512 = HMACSHA512.Create())
-                            {
-                                return ByteArrayToString(sha512.ComputeHash(fileStream));
-                            }
-                        case "MD5":
-                            using (var md5 = MD5.Create())
-                            {
-                                return ByteArrayToString(md5.ComputeHash(fileStream));
-                            }
-                        case "RIPEMD160":
-                            using (var ripemd160 = RIPEMD160.Create())
-                            {
-                                return ByteArrayToString(ripemd160.ComputeHash(fileStream));
-                            }
-                        //if defualt ever gets called 
-                        //there is a great change that the string hashAlgorithm is not right
-                        //so throws exception
-                        //CAUTION: HANDLE THIS EXCEPTION WHEN USE THIS METHOD!!!
-                        default:
-#if DEBUG
-                            var exception = new System.Exception("Error: Something is wrong, may be the hash algorithm request is not supported.");
-                            Debug.Write(exception.ToString());
-                            throw exception;
-#elif RELEASE
-                            throw new System.Exception("Error: Something is wrong, may be the hash algorithm request is not supported.");
-#endif
-        
+                        return false;
                     }
                 }
             }
-            //thows exception if path is not correct!
-            //CAUTION: HANDLE THIS EXCEPTION WHEN USE THIS METHOD!!!
-            catch (FileNotFoundException ex)
-            {
-#if DEBUG
-                Debug.Write(ex.ToString());
-#endif
-                throw ex;
-            }
+            return true;
+        }
 
-            //Local Function
-            //Hash computed by this method in default returns a byte array
-            //this method transfer it into string representation
-            string ByteArrayToString(byte[] input)
+        private void VerifyParameter(string algorithm, string path)
+        {
+            if (!File.Exists(path))
             {
-                StringBuilder result = new StringBuilder();
-                foreach (var item in input)
-                {
-                    result.Append(item.ToString("X2"));
-                }
-                return result.ToString();
+                throw new FileNotFoundException("File given in the path does not exist");
             }
+            if (!_calculator.ContainsKey(algorithm))
+            {
+                throw new KeyNotFoundException("Algoritm requested is not supported");
+            }
+        }
+
+        public void AddNewAlgorithm(string name, IHashCalculator hashClass)
+        {
+            _calculator.Add(name, hashClass);
         }
     }
 }
+
