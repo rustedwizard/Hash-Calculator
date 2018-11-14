@@ -50,7 +50,7 @@ Todo this, simple follow the following steps:
 
     * parameter name: the name of the algorithm, this will be used as algorithm name.
 
-    * parameter hashClass: the class which implement the IHashCalculator interface.
+    * parameter hashClass: instance of class which implement the IHashCalculator interface.
 
 # HashCalculator Version 1.x.x.x
 
