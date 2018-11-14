@@ -1,6 +1,6 @@
 # Hash-Calculator
 
-## Nuget package: HashCalculator Version 2.0.0.0
+## Nuget package: HashCalculator Version 2.0.0
 
 **This version is still in test, it haven't been uploaded yet**
 
