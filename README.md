@@ -2,8 +2,6 @@
 
 ## Nuget package: HashCalculator Version 2.0.0
 
-**This version is still in test, it haven't been uploaded yet**
-
 **CAUTION: HashCalculator 2.0 package introduce breaking change, the usage of this package is very different now!**
 
 In this version the HashCalculator now fully support computing hash for any given file asynchronously and provide the ability to extend the support of other hash algorithms
