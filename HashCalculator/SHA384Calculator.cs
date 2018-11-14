@@ -32,11 +32,6 @@ namespace HashCalculator
             }
         }
 
-        private async void GetResultAsync(string path)
-        {
-            _result = await ComputeHashAsync(path);
-        }
-
         public string GetHashInString(string path)
         {
             ComputeHash(path);
@@ -45,7 +40,7 @@ namespace HashCalculator
 
         public string GetHashInStringAsync(string path)
         {
-            GetResultAsync(path);
+            _result = ComputeHashAsync(path).Result;
             return Util.ByteArrayToString(_result);
         }
 
@@ -58,7 +53,7 @@ namespace HashCalculator
         public byte[] GetHashInByteAsync(string path)
         {
 
-            GetResultAsync(path);
+            _result = ComputeHashAsync(path).Result;
             return _result;
         }
     }
