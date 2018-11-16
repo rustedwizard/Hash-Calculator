@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace HashCalculator
 {
@@ -48,8 +49,13 @@ namespace HashCalculator
 
         public bool CompareTwoFilesHash(string algoritm, string path, string pathToCompare)
         {
-            byte[] first = GetHashInByteAsync(algoritm, path);
-            byte[] second = GetHashInByteAsync(algoritm, pathToCompare);
+            Task<byte[]> t1 = new Task<byte[]>(() => { return GetHashInByte(algoritm, path); });
+            Task<byte[]> t2 = new Task<byte[]>(() => { return GetHashInByte(algoritm, pathToCompare); });
+            t1.Start();
+            t2.Start();
+            Task.WaitAll(new Task[] { t1, t2 });
+            byte[] first = t1.Result;
+            byte[] second = t2.Result;
             foreach(var item in first)
             {
                 foreach(var secItem in second)
