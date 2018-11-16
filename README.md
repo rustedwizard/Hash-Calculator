@@ -1,5 +1,15 @@
 # Hash-Calculator
 
+## Hash-Calculator Version 2.0.1.1
+
+## Usage
+
+Usage of this version remains the same as last version
+
+## Bugfix
+
+* Address issue that CompareTwoFilesHash function hangs when used in GUI application.
+
 ## Nuget package: HashCalculator Version 2.0.0
 
 **CAUTION: HashCalculator 2.0 package introduce breaking change, the usage of this package is very different now!**
