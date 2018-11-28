@@ -27,7 +27,7 @@ namespace HashCalculator
                     return await Task.Run(() =>
                     {
                         return hasher.ComputeHash(fileStream);
-                    });
+                    }).ConfigureAwait(false);
                 }
             }
         }
