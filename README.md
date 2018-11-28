@@ -1,5 +1,15 @@
 # Hash-Calculator
 
+## Hash-Calculator Version 2.1.0.10
+
+## Usage
+
+Usage of this version remains the same as last version
+
+## Bugfix
+
+* Previously, use of async method to calculate the hash may cause the app hanging and irresponsive. This issue is now resolved.
+
 ## Hash-Calculator Version 2.0.1.1
 
 ## Usage
