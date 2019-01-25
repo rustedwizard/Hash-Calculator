@@ -27,7 +27,7 @@ namespace HashCalculator
                     return await Task.Run(() =>
                     {
                         return hasher.ComputeHash(fileStream);
-                    }).ConfigureAwait(false);
+                    });
                 }
             }
         }
@@ -38,9 +38,9 @@ namespace HashCalculator
             return Util.ByteArrayToString(_result);
         }
 
-        public string GetHashInStringAsync(string path)
+        public async Task<string> GetHashInStringAsync(string path)
         {
-            _result = ComputeHashAsync(path).Result;
+            _result = await ComputeHashAsync(path);
             return Util.ByteArrayToString(_result);
         }
 
@@ -50,10 +50,10 @@ namespace HashCalculator
             return _result;
         }
 
-        public byte[] GetHashInByteAsync(string path)
+        public async Task<byte[]> GetHashInByteAsync(string path)
         {
 
-            _result = ComputeHashAsync(path).Result;
+            _result = await ComputeHashAsync(path);
             return _result;
         }
     }

@@ -30,7 +30,7 @@ namespace HashCalculator
         {
             VerifyParameter(algorithm, path);
             IHashCalculator calculator = _calculator[algorithm];
-            return calculator.GetHashInStringAsync(path);
+            return calculator.GetHashInStringAsync(path).Result;
         }
 
         public byte[] GetHashInByte(string algorithm, string path)
@@ -44,7 +44,7 @@ namespace HashCalculator
         {
             VerifyParameter(algorithm, path);
             IHashCalculator calculator = _calculator[algorithm];
-            return calculator.GetHashInByteAsync(path);
+            return calculator.GetHashInByteAsync(path).Result;
         }
 
         public bool CompareTwoFilesHash(string algoritm, string path, string pathToCompare)

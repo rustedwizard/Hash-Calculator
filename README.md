@@ -1,5 +1,15 @@
 # Hash-Calculator
 
+## Hash-Calculator Version 2.2.0.0
+
+## Usage
+
+Usage of this version remains the same as last version
+
+## Bugfix
+
+* improved the asynchrnous hash calculation method.
+
 ## Hash-Calculator Version 2.1.0.10
 
 ## Usage

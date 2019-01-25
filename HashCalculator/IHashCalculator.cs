@@ -1,10 +1,12 @@
-﻿namespace HashCalculator
+﻿using System.Threading.Tasks;
+
+namespace HashCalculator
 {
     public interface IHashCalculator
     {
         string GetHashInString(string path);
-        string GetHashInStringAsync(string path);
+        Task<string> GetHashInStringAsync(string path);
         byte[] GetHashInByte(string path);
-        byte[] GetHashInByteAsync(string path);
+        Task<byte[]> GetHashInByteAsync(string path);
     }
 }
