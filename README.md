@@ -68,11 +68,11 @@ Todo this, simple follow the following steps:
 
     * string GetHashInString(string path)
 
-    * string GetHashInStringAsync(string path)
+    * async Task<string> GetHashInStringAsync(string path)
 
     * byte[] GetHashInByte(string path)
 
-    * byte[] GetHashInByteAsync(string path)
+    * async Task<byte[]> GetHashInByteAsync(string path)
 
 * After this simply call AddNewAlgorithm(string name, IHashCalculator hashClass)
 
@@ -111,3 +111,4 @@ any file and return its hash code in string representation.
 
 * Please **be aware** that ComputeHash method throws FileNotFoundExceptions for incorrect path to file
   and Exception for possible wrong algorithm name.
+Z
