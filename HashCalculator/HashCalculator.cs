@@ -26,11 +26,11 @@ namespace HashCalculator
             return calculator.GetHashInString(path);
         }
 
-        public string GetHashInStringAsync(string algorithm, string path)
+        public async Task<string> GetHashInStringAsync(string algorithm, string path)
         {
             VerifyParameter(algorithm, path);
             IHashCalculator calculator = _calculator[algorithm];
-            return calculator.GetHashInStringAsync(path).Result;
+            return await calculator.GetHashInStringAsync(path);
         }
 
         public byte[] GetHashInByte(string algorithm, string path)
@@ -40,11 +40,11 @@ namespace HashCalculator
             return calculator.GetHashInByte(path);
         }
 
-        public byte[] GetHashInByteAsync(string algorithm, string path)
+        public async Task<byte[]> GetHashInByteAsync(string algorithm, string path)
         {
             VerifyParameter(algorithm, path);
             IHashCalculator calculator = _calculator[algorithm];
-            return calculator.GetHashInByteAsync(path).Result;
+            return await calculator.GetHashInByteAsync(path);
         }
 
         public bool CompareTwoFilesHash(string algoritm, string path, string pathToCompare)
