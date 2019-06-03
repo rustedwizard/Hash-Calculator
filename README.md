@@ -1,5 +1,13 @@
 # Hash-Calculator
 
+## Hash-Calculator Version 2.3.0.0
+
+## Usage
+
+Following two method usage changed:
+* async Task<string> GetHashInStringAsync(string path)
+* async Task<byte[]> GetHashInByteAsync(string path)
+
 ## Hash-Calculator Version 2.2.0.0
 
 ## Usage
@@ -68,11 +76,11 @@ Todo this, simple follow the following steps:
 
     * string GetHashInString(string path)
 
-    * async Task<string> GetHashInStringAsync(string path)
+    * string GetHashInStringAsync(string path)
 
     * byte[] GetHashInByte(string path)
 
-    * async Task<byte[]> GetHashInByteAsync(string path)
+    * byte[] GetHashInByteAsync(string path)
 
 * After this simply call AddNewAlgorithm(string name, IHashCalculator hashClass)
 
