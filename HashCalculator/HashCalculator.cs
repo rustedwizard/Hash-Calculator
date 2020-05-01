@@ -47,15 +47,12 @@ namespace HashCalculator
             return await calculator.GetHashInByteAsync(path);
         }
 
-        public bool CompareTwoFilesHash(string algoritm, string path, string pathToCompare)
+        public async Task<bool> CompareTwoFilesHash(string algoritm, string path, string pathToCompare)
         {
             Task<byte[]> t1 = new Task<byte[]>(() => { return GetHashInByte(algoritm, path); });
             Task<byte[]> t2 = new Task<byte[]>(() => { return GetHashInByte(algoritm, pathToCompare); });
-            t1.Start();
-            t2.Start();
-            Task.WaitAll(new Task[] { t1, t2 });
-            byte[] first = t1.Result;
-            byte[] second = t2.Result;
+            byte[] first = await t1;
+            byte[] second = await t2;
             foreach(var item in first)
             {
                 foreach(var secItem in second)
