@@ -74,7 +74,7 @@ namespace HashCalculator
             }
             if (!_calculator.ContainsKey(algorithm))
             {
-                throw new KeyNotFoundException("Algoritm requested is not supported");
+                throw new KeyNotFoundException("Algorithm requested is not supported");
             }
         }
 
